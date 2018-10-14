@@ -1,0 +1,131 @@
+
+/* Influence of M */
+
+The performance of the GMM model is tested with 32 max number of speakers, 20 maximum iterations, and M varying from 8 to 1 with a decrement of 1. The result for seed(0) and seed(401) are shown below.
+
+seed(0)
+M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+M: 7 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+M: 6 	 maxIter: 20 	 S: 32 	 Accuracy: 0.96875
+M: 5 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+M: 4 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+M: 3 	 maxIter: 20 	 S: 32 	 Accuracy: 0.9375
+M: 2 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+M: 1 	 maxIter: 20 	 S: 32 	 Accuracy: 0.96875
+
+seed(401)
+M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+M: 7 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+M: 6 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+M: 5 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+M: 4 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+M: 3 	 maxIter: 20 	 S: 32 	 Accuracy: 0.90625
+M: 2 	 maxIter: 20 	 S: 32 	 Accuracy: 0.96875
+M: 1 	 maxIter: 20 	 S: 32 	 Accuracy: 0.96875
+
+
+From the results obtained above, we can realize that, as the number of gaussian mixtures decreases, the penalty is not significant, as the performance is close to 100% even for smaller M. Although the results are affected by random noise, after trying out different seed values, an insignificant decreasing trend of performance is observed, for example, when using seed(401). This indicates M is very likely to have an minor influence on the performance: as number of gaussian mixture decreases, the performance of the GMM model decreases. 
+
+
+
+/* Influence of maxIter */
+Influence of maxIter is tested using default setting with M=8 and S = 32. The result for seed(0) and seed(401) are shown below.
+
+seed(0)
+M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+M: 8 	 maxIter: 18 	 S: 32 	 Accuracy: 1.0
+M: 8 	 maxIter: 16 	 S: 32 	 Accuracy: 1.0
+M: 8 	 maxIter: 14 	 S: 32 	 Accuracy: 1.0
+M: 8 	 maxIter: 12 	 S: 32 	 Accuracy: 1.0
+M: 8 	 maxIter: 10 	 S: 32 	 Accuracy: 0.96875
+M: 8 	 maxIter: 8 	 S: 32 	 Accuracy: 1.0
+M: 8 	 maxIter: 6 	 S: 32 	 Accuracy: 1.0
+M: 8 	 maxIter: 4 	 S: 32 	 Accuracy: 0.96875
+M: 8 	 maxIter: 2 	 S: 32 	 Accuracy: 0.96875
+M: 8 	 maxIter: 0 	 S: 32 	 Accuracy: 0.96875
+
+seed(401)
+M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+M: 8 	 maxIter: 18 	 S: 32 	 Accuracy: 1.0
+M: 8 	 maxIter: 16 	 S: 32 	 Accuracy: 1.0
+M: 8 	 maxIter: 14 	 S: 32 	 Accuracy: 1.0
+M: 8 	 maxIter: 12 	 S: 32 	 Accuracy: 1.0
+M: 8 	 maxIter: 10 	 S: 32 	 Accuracy: 0.96875
+M: 8 	 maxIter: 8 	 S: 32 	 Accuracy: 1.0
+M: 8 	 maxIter: 6 	 S: 32 	 Accuracy: 1.0
+M: 8 	 maxIter: 4 	 S: 32 	 Accuracy: 1.0
+M: 8 	 maxIter: 2 	 S: 32 	 Accuracy: 0.96875
+M: 8 	 maxIter: 0 	 S: 32 	 Accuracy: 1.0
+
+As we can observe from the results above, the chance of maxIter on the EM algorithm in not significant, as the algorithm converges very fast. This may due to the configuration of the dataset. Because we chose an actual mfcc vector to initialize mu, and properly initialized Sigma and omega, the model converge really fast. From the results that we got, for example in seed(401), there could be a trend of decrease in the performance, but we this is uncertain until we do further testings with a larger dataset.
+
+
+
+/* Influence of S */
+
+A number of S values are tested with M=8 and maxIter = 20(default setting). The seed is set to 401.
+
+Case 1: If we were to run the test over all test cases on the limited training data(include unseen speakers), the output is listed below.
+seed(401)
+M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+M: 8 	 maxIter: 20 	 S: 24 	 Accuracy: 0.75
+M: 8 	 maxIter: 20 	 S: 16 	 Accuracy: 0.5
+M: 8 	 maxIter: 20 	 S: 8 	 Accuracy: 0.25
+M: 8 	 maxIter: 20 	 S: 4 	 Accuracy: 0.125
+
+Case 2: If we were to test the data only for the trained speakers, we get result as follows:
+M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+M: 8 	 maxIter: 20 	 S: 24 	 Accuracy: 1.0
+M: 8 	 maxIter: 20 	 S: 16 	 Accuracy: 1.0
+M: 8 	 maxIter: 20 	 S: 8 	 Accuracy: 1.0
+M: 8 	 maxIter: 20 	 S: 4 	 Accuracy: 1.0
+
+As we can clearly observe from the result that, in the first scenario, when the model is tested on the unsigned speakers, as the maximum number of speakers decreases, the performance of GMM model significantly decreases monotonically. Moreover, the accuracy is approximately the number of speakers used for training divided by the total number of speakers, which is 32. This can be an evidence to prove that GMM acts as a adequate model for the speaker classification task. 
+
+In the second case, when the amount of training set and test set both decreases, the accuracy remains to be 1. This result makes sense since the model is able to distinguish 32 speakers, it should be able to recognized 4 different speakers(with the risk of overfitting). 
+
+
+
+/* Hypothetical Answers to Given Questions */
+
+1. Q: How might you improve the classification accuracy of the Gaussian mixtures, without adding more training data?
+
+(1) Tuning M. 
+From the trend observed above, the number of M may have a effect on gmm performance, as the larger M is, the more fine the utterance are fit by the gaussian curves. By tuning M, we are able to find a best fit for the given dataset, thus increase the accuracy.
+
+(2). Increase maxIter.
+The current stop condition for the EM algorithm is either when number of iteration reaches maxIter, or when the likelihood stops increasing. Although in our dataset, we observed a fast convergence in our EM algorithm, in general, increasing maximum iterations will result in a gmm performance equal or greater than current performance. 
+
+(3). Introducing randomness
+We can randomly initialize the parameters, or adding random noise in the training process. As it is possible for EM algorithm to stuck in a local maximum, the introduction of randomness is able to shake the result out of the local maxima. 
+
+(4). Adding regularization to data.
+If the distinction between any two speakers are sparse, adding regularization to dataset, for example, L1 regularization(to create an elastic net) will be effectively prevent overfitting of the Gaussian Mixtures. Consequently, the accuracy on test set may increase.
+
+
+
+2. Q: When would your classifier decide that a given test utterance comes from none of the trained speaker models, and how would your classifier come to this decision?
+
+The classifier would decide that a given test utterance comes from none of the trained speaker models models when the likelihood of the test data given all models are 0. This occurs when the values of the log likelihood goes to infinity. Referring to the formula, the log likelihood of the function is a weighted sum of the bm values, the observation probability. When all of the training samples are equally likely, bm will be zero, and thus the logarithm will be negative infinity. 
+
+
+
+3. Q: Can you think of some alternative methods for doing speaker identification that don't use Gaussian mixtures?
+
+We can use either generative model or discriminative model to achieve the task of speaker identification.
+
+Generative example: 
+	K-means: We can find K clusters of utterance for K speakers. For each test utterance, we find the closest clusters near the test data, categorized the test data based on the result.
+
+Discriminative example:
+	DNN and RNN models can be useful in classification tasks. This paper[1] used LSTM to achieve an accuracy of 93%. RNN is able to grasp the long term features of the data. If we are using RNN, the output can be represented as one-hot coded vector that corresponds to the predicted speaker. 
+
+	We can also use Support Vector Machines to create high-dimensional boundaries between numbers of speakers. 
+
+
+Reference
+[1]Sai Prabhakar Pandi Selvaraj, Sandeep Konam, (2015), "Deep Learning for Speaker Recognition", [Online] Available at: https://skonam.github.io/course_projects/10701.pdf
+
+
+
+

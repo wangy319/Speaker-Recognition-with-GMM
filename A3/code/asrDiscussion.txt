@@ -1,0 +1,1 @@
+Google average: nan. Google standard deviation: nan. Kaldi average: nan. Kaldi standard deviation: nan. Statistical significance (p-value): Ttest_indResult(statistic=nan, pvalue=nan).

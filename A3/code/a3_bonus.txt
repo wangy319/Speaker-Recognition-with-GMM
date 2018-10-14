@@ -1,0 +1,19 @@
+
+########## Dimensionality reduction ##########
+
+Script used: a3_gmm.py
+
+PCA has been incorporated into GMM. Different d' values with d'<d were tested with 32 speakers data, maxIter = 20, and 8 Gaissian Mixtures. The following accuracies, and the matrix files are saved as pca_d'.npy.
+
+pca_dim: 10 	 M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+pca_dim: 8 	 M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+pca_dim: 7 	 M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+pca_dim: 6 	 M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+pca_dim: 5 	 M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 0.328125
+pca_dim: 4 	 M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 0.22916666666666666
+pca_dim: 3 	 M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 0.17708333333333334
+pca_dim: 2 	 M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 0.140625
+
+
+Discussion:
+As observing from the above results, when d is greater that 6, the accuracy are generally high, which are very close to 100%. However, when the dimension is reduce to below 6, the accuracy decrease dramatically from 1.0 to 0.328. Then, the accuracy decreases gradually until 0.14 when the reduced dimension is 2. Generally, PCA is very effective in reducing data dimension, and save a large amount of computational power. In this case, the result obtained using d' = 6 is very much similar to using a dimension of 13, while this reduce half amount of computational power. This dataset is most distinguishable in its first 6 dimensions.  

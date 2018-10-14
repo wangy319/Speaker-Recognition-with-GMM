@@ -1,0 +1,8 @@
+pca_dim: 10 	 M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+pca_dim: 8 	 M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+pca_dim: 7 	 M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+pca_dim: 6 	 M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
+pca_dim: 5 	 M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 0.328125
+pca_dim: 4 	 M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 0.22916666666666666
+pca_dim: 3 	 M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 0.17708333333333334
+pca_dim: 2 	 M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 0.140625

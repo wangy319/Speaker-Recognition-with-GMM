@@ -1,0 +1,1 @@
+pca_dim: 6 	 M: 8 	 maxIter: 20 	 S: 32 	 Accuracy: 1.0
